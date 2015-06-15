@@ -40,7 +40,7 @@ for o, a in opts:
 
 # Handle the arguments.
 try:
-  fcns = args[0].split(';')
+  fcns = [x.strip() for x in args[0].split(';')]
   minx = eval(args[1])
   maxx = eval(args[2])
 except IndexError:
@@ -60,6 +60,7 @@ x = linspace(minx, maxx, 100)
 for i, f in enumerate(fcns):
   y = eval(f)
   plt.plot(x, y, "-", linewidth=2)
+plt.legend(fcns, frameon=False);
 plt.minorticks_on()
 plt.grid(which='both', color='#aaaaaa')
 
