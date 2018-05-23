@@ -6,7 +6,7 @@ import re
 import getopt
 
 marker = '.'
-opts, args = getopt.getopt(sys.argv[1:], 'l:S')
+opts, args = getopt.getopt(sys.argv[1:], 'lS')
 for o, a in opts:
   if o == '-l':
     marker = '.-'
