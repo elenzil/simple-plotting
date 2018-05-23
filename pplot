@@ -6,10 +6,12 @@ import re
 import getopt
 
 marker = '.'
-opts, args = getopt.getopt(sys.argv[1:], 'l')
+opts, args = getopt.getopt(sys.argv[1:], 'l:S')
 for o, a in opts:
   if o == '-l':
     marker = '.-'
+  elif o == '-S':
+    plt.gca().set_aspect(1.0)
 
 x = []
 y = []   
@@ -21,10 +23,6 @@ for line in sys.stdin:
 plt.plot(x, y, marker)
 plt.minorticks_on()
 plt.grid(which='both', color='#aaaaaa')
-
 # add a little bit of margin around the figure so that minimal/maximal points are easier to see
 plt.margins(0.05)
-# set the aspect ratio to square, so that circles look like circles
-plt.gca().set_aspect(1.0)
-
 plt.savefig(sys.stdout, format='png')
